@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المشاريع السكنية</title>
+    <style>
+     
+        .containerrr {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .card {
+            width: 32%;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .card table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .card table th, .card table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .card table th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .card table td {
+            color: #666;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin: 10px 15px;
+            color: #333;
+        }
+
+        @media screen and (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="containerrr rtl">
+        <h1>المشاريع السكنية</h1>
+        <div class="card-container">
+            <div class="card">
+                <img src="images/pexels-photo-1732414.jpeg" alt="Turquoise Villas 3">
+                <h3>Turquoise Villas 3</h3>
+                <table>
+                    <tr>
+                        <th>نوع المشروع</th>
+                        <td>سكني</td>
+                    </tr>
+                    <tr>
+                        <th>وصف المشروع</th>
+                        <td>فلل مستقلة</td>
+                    </tr>
+                    <tr>
+                        <th>حالة البيع</th>
+                        <td>مفتاح للبيع</td>
+                    </tr>
+                    <tr>
+                        <th>الموقع</th>
+                        <td>حي السلمانية، الرياض</td>
+                    </tr>
+                    <tr>
+                        <th>نسبة الإنجاز</th>
+                        <td>86%</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <img src="images/pexels-alex-qian-1180283-2343465.jpg" alt="Greenfields Compound">
+                <h3>Greenfields Compound</h3>
+                <table>
+                    <tr>
+                        <th>نوع المشروع</th>
+                        <td>سكني</td>
+                    </tr>
+                    <tr>
+                        <th>وصف المشروع</th>
+                        <td>مجمع توين هاوس وشقق</td>
+                    </tr>
+                    <tr>
+                        <th>حالة البيع</th>
+                        <td>جاهز للاستخدام الفوري</td>
+                    </tr>
+                    <tr>
+                        <th>الموقع</th>
+                        <td>حي اليرموك، الرياض</td>
+                    </tr>
+                    <tr>
+                        <th>نسبة الإنجاز</th>
+                        <td>29%</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <img src="images/pexels-rachel-claire-4846097.jpg" alt="برج سكني">
+                <h3>برج سكني</h3>
+                <table>
+                    <tr>
+                        <th>نوع المشروع</th>
+                        <td>سكني</td>
+                    </tr>
+                    <tr>
+                        <th>وصف المشروع</th>
+                        <td>شقق</td>
+                    </tr>
+                    <tr>
+                        <th>حالة البيع</th>
+                        <td>على المخطط</td>
+                    </tr>
+                    <tr>
+                        <th>الموقع</th>
+                        <td>شمال الرياض</td>
+                    </tr>
+                    <tr>
+                        <th>نسبة الإنجاز</th>
+                        <td>5%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركاء النجاح</title>
+    <style>
+      
+
+        .header {
+            background-color: #E6F0EE; /* اللون اللبني */
+            padding: 40px;
+            text-align: center;
+
+            margin-top: 40px;
+        }
+
+        .header__content {
+            position: relative;
+        }
+
+        .header__content h1 {
+            margin: 0;
+            font-size: 40px;
+            color: #207670;
+            margin-bottom: 30px;
+        }
+
+        .logos-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .logos {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll 15s linear infinite;
+        }
+
+        .logo {
+            flex: 0 0 16.66%; /* عرض الشعار في الشاشات الكبيرة */
+            max-width: 16.66%;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .dots-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 10px;
+            margin-top: 20px;
+
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #333;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); } /* تمرير الشعار */
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                flex: 0 0 25%; /* عرض الشعار في الشاشات الصغيرة */
+                max-width: 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__content">
+            <h1>شركاء النجاح</h1>
+            <div class="logos-container">
+                <div class="logos">
+                    <div class="logo"><img src="images/Asset 1.png" alt="شعار 1"></div>
+                    <div class="logo"><img src="images/Asset 1.png" alt="شعار 2"></div>
+                    <div class="logo"><img src="images/Asset 1.png" alt="شعار 3"></div>
+                    <div class="logo"><img src="images/Asset 1.png" alt="شعار 4"></div>
+                    <div class="logo"><img src="images/Asset 1.png" alt="شعار 5"></div>
+                    <div class="logo"><img src="images/Asset 1.png" alt="شعار 6"></div>
+                    <div class="logo"><img src="images/Asset 1.png" alt="شعار 7"></div>
+                    <div class="logo"><img src="images/Asset 1.png" alt="شعار 8"></div>
+                </div>
+            </div>
+            <div class="dots-container">
+                <!-- نقاط المؤشر سيتم إضافتها بواسطة JavaScript -->
+            </div>
+        </div>
+    </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logosContainer = document.querySelector('.logos-container');
+            const logos = document.querySelector('.logos');
+            const totalLogos = logos.children.length;
+            const dotsContainer = document.querySelector('.dots-container');
+            let visibleLogos = window.innerWidth <= 768 ? 4 : 6; // عدد الشعارات المعروضة حسب حجم الشاشة
+            let currentIndex = 0;
+
+            // حساب عرض الشعار
+            const logoWidth = logos.children[0].offsetWidth;
+            const totalWidth = logoWidth * totalLogos;
+
+            // إنشاء النقاط
+            for (let i = 0; i < totalLogos; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dotsContainer.appendChild(dot);
+            }
+
+            const dots = dotsContainer.querySelectorAll('.dot');
+
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex + 1) % (totalLogos - visibleLogos + 1);
+                updateDots();
+            }
+
+            function showPrev() {
+                currentIndex = (currentIndex - 1 + (totalLogos - visibleLogos + 1)) % (totalLogos - visibleLogos + 1);
+                updateDots();
+            }
+
+            // Auto slide every 3 seconds
+            setInterval(showNext, 3000);
+
+            // Handle window resize to update the number of visible logos
+            window.addEventListener('resize', function() {
+                const newVisibleLogos = window.innerWidth <= 768 ? 4 : 6;
+                if (visibleLogos !== newVisibleLogos) {
+                    visibleLogos = newVisibleLogos;
+                }
+            });
+
+            // Add click event listeners to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateDots();
+                });
+            });
+
+            // Initialize dots
+            updateDots();
+        });
+    </script>
+</body>
+</html>

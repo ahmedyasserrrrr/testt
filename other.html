@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاريعنا</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            direction: rtl;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        h2 {
+            color: #0a4d4d;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.2em;
+        }
+
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            flex: 0 0 100%;
+            position: relative;
+            transition: transform 0.5s, opacity 0.5s;
+            margin: 0 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 400px;
+            opacity: 0.5;
+            transform: scale(0.9);
+        }
+
+        .card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 10px 10px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card.active .card-content {
+            opacity: 1;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-nav button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            padding: 0 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex: 0 0 100%;
+                height: 300px; /* Adjust height for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>مشاريعنا</h2>
+    <p>نعرض لكم أكثر المشاريع المميزة</p>
+    <div class="carousel">
+        <div class="carousel-track">
+            <div class="card">
+                <img src="images/pexels-alex-qian-1180283-2343465.jpg" alt="مشروع 1">
+                <div class="card-content">
+                    <h3>مشروع 31</h3>
+                    <span>السعر يبدأ من 530000 ألف</span>
+                    <p>النوع: سكني</p>
+                    <p>المرحلة: قيد الإنشاء</p>
+                </div>
+            </div>
+            <div class="card active">
+                <img src="images/pexels-photo-1732414.jpeg" alt="مشروع 2">
+                <div class="card-content">
+                    <h3>برج باقوت</h3>
+                    <span>السعر يبدأ من 320000 ألف</span>
+                    <p>النوع: سكني</p>
+                    <p>المرحلة: قيد الإنشاء</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/pexels-photo-323780.jpeg" alt="مشروع 3">
+                <div class="card-content">
+                    <h3>أولڤ ريزيدنس</h3>
+                    <span>السعر يبدأ من 485000 ألف</span>
+                    <p>النوع: سكني</p>
+                    <p>المرحلة: قيد الإنشاء</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/600x400" alt="مشروع 4">
+                <div class="card-content">
+                    <h3>مشروع 4</h3>
+                    <span>السعر يبدأ من 600000 ألف</span>
+                    <p>النوع: سكني</p>
+                    <p>المرحلة: قيد الإنشاء</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="prev">&laquo;</button>
+            <button class="next">&raquo;</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const track = document.querySelector('.carousel-track');
+    const cards = Array.from(track.children);
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+    let currentSlide = 1;
+
+    const updateCarousel = () => {
+        cards.forEach((card, index) => {
+            card.classList.remove('active');
+            card.style.transform = 'scale(0.9)';
+            card.style.opacity = '0.5';
+        });
+
+        cards[currentSlide].classList.add('active');
+        cards[currentSlide].style.transform = 'scale(1)';
+        cards[currentSlide].style.opacity = '1';
+
+        const slideWidth = cards[currentSlide].getBoundingClientRect().width + 20; // Including margin
+        const offset = -(currentSlide) * slideWidth;
+        track.style.transform = translateX($`{offset}px`);
+    };
+
+    nextButton.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % cards.length;
+        updateCarousel();
+    });
+
+    prevButton.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + cards.length) % cards.length;
+        updateCarousel();
+    });
+
+    updateCarousel();
+</script>
+
+</body>
+</html>
